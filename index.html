@@ -24,22 +24,97 @@
     <title>Weather Dashboard</title>
 </head>
 <body>
-    <header class="display-4 bg-dark text-white text-center p-2">Weather Dashboard
-        </header>
-    <div class="card w-25 bg-light shadow">
-        <div class="card-body">
-          <h2 class="card-title">Search for a City:</h2>
-          <div class="input-group pb-4">
-            <input type="text" id="searchTerm" value="Cats" class="form-control form-control-lg">
-            <span class="input-group-btn"><button onclick="myFunction()" class="btn btn-primary btn-lg" type="button"><span class="oi oi-magnifying-glass"></span></button>
-                </span>
+    <header class="display-4 bg-dark text-white text-center p-2">Weather Dashboard</header>
+   
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <h2 class="card-title p-1">Search for a City:</h2>
+            <div class="row overflow-auto">
+              <div class="col-3">
+                <div class="input-group pb-4">
+                    <input type="text" id="searchTerm" value="Cats" class="form-control form-control-lg">
+                    <span class="input-group-btn"><button onclick="myFunction()" class="btn btn-primary btn-lg" type="button"><span class="oi oi-magnifying-glass"></span></button>
+                        </span>
+                    </div>
+                    <div class="list-group-item" id="response-container">Austin</div>
+                    
+              </div>
+              <div class="col-9">
+                <div class="card shadow" style="width: 100%;">
+                    <div class="card-body">
+                        <h1 class="card-title">Card title</h1>
+                        
+                        <ul class="list-group">
+                            <li class="list-group-item border-0">Temp</li>
+                            <li class="list-group-item border-0">Humidity</li>
+                            <li class="list-group-item border-0">Wind Speed</li>
+                            <li class="list-group-item border-0">UV Index</li>
+                          </ul>
+                    </div>
+                    </div>
+              </div>
             </div>
-            <div class="list-group-item" id="response-container"></div>
-        </div>     
-        </div>  
-    </div>
-  
-  
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-9 offset-3 pt-4 pb-2">
+                <h1 class="card-title p-1">5-Day Forecast:</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-9 offset-3">
+                <div class="card-deck">
+                    <div class="card bg-primary shadow text-white ">
+                      <div class="card-body">
+                        <h2 class="card-title pb-2">Card title</h2>
+                        <p class="card-text pb-2">Temp</p>
+                        <p class="card-text pb-2">Temp</p>
+                        <p class="card-text pb-2">Temp</p>
+                      </div>
+                    </div>
+                    <div class="card bg-primary shadow text-white ">
+                        <div class="card-body">
+                          <h2 class="card-title pb-2">Card title</h2>
+                          <p class="card-text pb-2">Temp</p>
+                          <p class="card-text pb-2">Temp</p>
+                          <p class="card-text pb-2">Temp</p>
+                        </div>
+                      </div>
+                    <div class="card bg-primary shadow text-white ">
+                        <div class="card-body">
+                          <h2 class="card-title pb-2">Card title</h2>
+                          <p class="card-text pb-2">Temp</p>
+                          <p class="card-text pb-2">Temp</p>
+                          <p class="card-text pb-2">Temp</p>
+                        </div>
+                    </div>
+                    <div class="card bg-primary shadow text-white ">
+                        <div class="card-body">
+                          <h2 class="card-title pb-2">Card title</h2>
+                          <p class="card-text pb-2">Temp</p>
+                          <p class="card-text pb-2">Temp</p>
+                          <p class="card-text pb-2">Temp</p>
+                        </div>
+                      </div>
+                    <div class="card bg-primary shadow text-white ">
+                        <div class="card-body">
+                          <h2 class="card-title pb-2">Card title</h2>
+                          <p class="card-text pb-2">Temp</p>
+                          <p class="card-text pb-2">Temp</p>
+                          <p class="card-text pb-2">Temp</p>
+                        </div>
+                    </div>   
+                   
+                  </div>
+                
+            
+            </div>
+        </div>
+      </div>
+
+
+
 
 
 
