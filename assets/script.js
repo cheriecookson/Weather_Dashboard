@@ -1,25 +1,33 @@
+
 function myFunction() {
-    var searchCity = document.querySelector('#searchCity').value;
+    var citySearch = document.querySelector('#citySearch').value;
+    $("#today").text(moment().format('(MM/DD/YYYY)'));
     
     fetch(
       'http://api.openweathermap.org/data/2.5/forecast?q=' +
-      searchCity + '&appid=46619697f21a244c99d30c9c97e0ff6c'
+      citySearch + '&units=imperial&appid=46619697f21a244c99d30c9c97e0ff6c'
     )
     .then(function(response) {
       return response.json();
     })
     .then(function(response) {
       var temp = response.list[0].main.temp;
-      console.log(temp);
+        $("#tempToday").text(temp);
+        
       var humidity = response.list[0].main.humidity;
-      console.log(humidity);
+        $("#humidityToday").text(humidity);
+       
       var windSpeed = response.list[0].wind.speed;
-      console.log(windSpeed);
+        $("#windSpeedToday").text(windSpeed);
+        
       var cityLat = response.city.coord.lat;
-      console.log(cityLat);
+        
       var cityLon = response.city.coord.lon;
-      console.log(cityLon);
-      
+       
+      var cityName = response.city.name;
+        $("#cityNameResult").text(cityName);
+          
+
   fetch(
     'http://api.openweathermap.org/data/2.5/uvi/forecast?appid=46619697f21a244c99d30c9c97e0ff6c&lat=' + 
     cityLat + '&lon=' + cityLon + '&cnt=0'
@@ -29,9 +37,22 @@ function myFunction() {
   })
   .then(function(responseUV) {
     var uvIndex = responseUV[0].value;
-    console.log(uvIndex);
+    $("#uvIndexToday").text(uvIndex);
+    
+    if (uvIndex < 3) {
+      $("#uvIndexToday").addClass("bg-success");
+    } else if (uvIndex > 2 && uvIndex < 6) {
+      $("#uvIndexToday").addClass("bg-warning");
+    } else if (uvIndex > 5 && uvIndex < 8) {
+      $("#uvIndexToday").addClass("orange");
+    } else if (uvIndex > 7 && uvIndex < 11) {
+      $("#uvIndexToday").addClass("bg-danger");
+    } else {
+      $("#uvIndexToday").addClass("purple");
+    }  
   });
 });
+
 }
 
 //   function rendereditEvents(list, id) {
