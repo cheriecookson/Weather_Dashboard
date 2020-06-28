@@ -2,7 +2,10 @@
 function myFunction() {
     var citySearch = document.querySelector('#citySearch').value;
     $("#today").text(moment().format('(MM/DD/YYYY)'));
+    var day1 = moment().add(1, 'day').format('(MM/DD/YYYY)');
+    console.log(day1);
     
+
     fetch(
       'http://api.openweathermap.org/data/2.5/forecast?q=' +
       citySearch + '&units=imperial&appid=46619697f21a244c99d30c9c97e0ff6c'
@@ -13,20 +16,19 @@ function myFunction() {
     .then(function(response) {
       var temp = response.list[0].main.temp;
         $("#tempToday").text(temp);
-        
       var humidity = response.list[0].main.humidity;
         $("#humidityToday").text(humidity);
-       
       var windSpeed = response.list[0].wind.speed;
-        $("#windSpeedToday").text(windSpeed);
-        
-      var cityLat = response.city.coord.lat;
-        
+        $("#windSpeedToday").text(windSpeed); 
+      var cityLat = response.city.coord.lat;       
       var cityLon = response.city.coord.lon;
-       
       var cityName = response.city.name;
         $("#cityNameResult").text(cityName);
-          
+      var icon = response.list[0].weather[0].icon;
+      var iconLink = "http://openweathermap.org/img/wn/" + icon + "@2x.png";
+        $("#iconToday").attr('src', iconLink);
+
+        // for (var i = 1; i <= 5; i++) {  
 
   fetch(
     'http://api.openweathermap.org/data/2.5/uvi/forecast?appid=46619697f21a244c99d30c9c97e0ff6c&lat=' + 
@@ -51,6 +53,9 @@ function myFunction() {
       $("#uvIndexToday").addClass("purple");
     }  
   });
+
+// Loop for 5 Day Forecast goes here... Date, icon, temp, humidity
+
 });
 
 }
