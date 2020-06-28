@@ -19,13 +19,20 @@ function myFunction() {
       console.log(cityLat);
       var cityLon = response.city.coord.lon;
       console.log(cityLon);
-    });
-  }
-
-  'http://api.openweathermap.org/data/2.5/uvi/forecast?appid=46619697f21a244c99d30c9c97e0ff6c&lat=' + cityLat '&lon=' + cityLon + '&cnt=1'
-
-
-
+      
+  fetch(
+    'http://api.openweathermap.org/data/2.5/uvi/forecast?appid=46619697f21a244c99d30c9c97e0ff6c&lat=' + 
+    cityLat + '&lon=' + cityLon + '&cnt=0'
+  )
+  .then(function(responseUV) {
+    return responseUV.json();
+  })
+  .then(function(responseUV) {
+    var uvIndex = responseUV[0].value;
+    console.log(uvIndex);
+  });
+});
+}
 
 //   function rendereditEvents(list, id) {
 //     $('#editEvents'+ id).empty();
