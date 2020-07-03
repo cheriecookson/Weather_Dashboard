@@ -1,58 +1,85 @@
+var cityList = JSON.parse(localStorage.getItem("cityList")) || ["dallas", "denver", "houston"];
+function cities(arr) {
+  $("#searchList").empty();
+  for (var i = 0; i < arr.length; i++) {
+    var li = $("<li>");
+    li.attr("class", "list-group-item cityList");
+    var city = arr[i].split("");
+    city[0] = city[0].toUpperCase();
+    li.text(city.join(""));
+    $("#searchList").append(li);
+  }
+}
+cities(cityList);
 
-function myFunction() {
-    var citySearch = document.querySelector('#citySearch').value;
-    $("#today").text(moment().format('(MM/DD/YYYY)'));
-    var day1 = moment().add(1, 'day').format('(MM/DD/YYYY)');
-    console.log(day1);
-    
+$("#searchList").on("click", ".cityList", function(event) {
+  console.log($(this).text());
+  apiFunc($(this).text().toLowerCase());
+});
 
-    fetch(
-      'http://api.openweathermap.org/data/2.5/forecast?q=' +
-      citySearch + '&units=imperial&appid=46619697f21a244c99d30c9c97e0ff6c'
-    )
-    .then(function(response) {
-      return response.json();
-    })
-    .then(function(response) {
-      var temp = response.list[0].main.temp;
-        $("#tempToday").text(temp);
-      var humidity = response.list[0].main.humidity;
-        $("#humidityToday").text(humidity);
-      var windSpeed = response.list[0].wind.speed;
-        $("#windSpeedToday").text(windSpeed); 
-      var cityLat = response.city.coord.lat;       
-      var cityLon = response.city.coord.lon;
-      var cityName = response.city.name;
-        $("#cityNameResult").text(cityName);
-      var icon = response.list[0].weather[0].icon;
-      var iconLink = "http://openweathermap.org/img/wn/" + icon + "@2x.png";
-        $("#iconToday").attr('src', iconLink);
-
-        // for (var i = 1; i <= 5; i++) {  
+function apiFunc(citySearch) {
+  if (!cityList.includes(citySearch)) {
+    cityList.push(citySearch.toLowerCase());
+    localStorage.setItem("cityList", JSON.stringify(cityList));
+    cities(cityList);
+  }
+  
+  $("#today").text(moment().format('(MM/DD/YYYY)'));
+  // var addDay = (1++, 'day');
+  $("#timeDay1").text(moment().add(1, 'day').format('MM/DD/YYYY'));
+  $("#timeDay2").text(moment().add(2, 'day').format('MM/DD/YYYY'));
+  $("#timeDay3").text(moment().add(3, 'day').format('MM/DD/YYYY'));
+  $("#timeDay4").text(moment().add(4, 'day').format('MM/DD/YYYY'));
+  $("#timeDay5").text(moment().add(5, 'day').format('MM/DD/YYYY'));
 
   fetch(
-    'http://api.openweathermap.org/data/2.5/uvi/forecast?appid=46619697f21a244c99d30c9c97e0ff6c&lat=' + 
-    cityLat + '&lon=' + cityLon + '&cnt=0'
+    'http://api.openweathermap.org/data/2.5/forecast?q=' +
+    citySearch + '&units=imperial&appid=46619697f21a244c99d30c9c97e0ff6c'
   )
-  .then(function(responseUV) {
-    return responseUV.json();
+  .then(function(response) {
+    return response.json();
   })
-  .then(function(responseUV) {
-    var uvIndex = responseUV[0].value;
-    $("#uvIndexToday").text(uvIndex);
-    
-    if (uvIndex < 3) {
-      $("#uvIndexToday").addClass("bg-success");
-    } else if (uvIndex > 2 && uvIndex < 6) {
-      $("#uvIndexToday").addClass("bg-warning");
-    } else if (uvIndex > 5 && uvIndex < 8) {
-      $("#uvIndexToday").addClass("orange");
-    } else if (uvIndex > 7 && uvIndex < 11) {
-      $("#uvIndexToday").addClass("bg-danger");
-    } else {
-      $("#uvIndexToday").addClass("purple");
-    }  
-  });
+  .then(function(response) {
+      $("#tempToday").text(response.list[0].main.temp);
+      $("#tempDay1").text(response.list[1].main.temp);
+
+      $("#humidityToday").text(response.list[0].main.humidity);
+      $("#humidityDay1").text(response.list[1].main.humidity);
+
+      $("#windSpeedToday").text(response.list[0].wind.speed); 
+    var cityLat = response.city.coord.lat;       
+    var cityLon = response.city.coord.lon;
+      $("#cityNameResult").text(response.city.name);
+    var icon = response.list[0].weather[0].icon;
+       $("#iconToday").attr('src', "http://openweathermap.org/img/wn/" + icon + "@2x.png");
+    var iconDay1 = response.list[1].weather[0].icon;
+       $("#iconDay1").attr('src', "http://openweathermap.org/img/wn/" + iconDay1 + "@2x.png");   
+
+      // for (var i = 1; i <= 5; i++) {  
+
+fetch(
+  'http://api.openweathermap.org/data/2.5/uvi/forecast?appid=46619697f21a244c99d30c9c97e0ff6c&lat=' + 
+  cityLat + '&lon=' + cityLon + '&cnt=0'
+)
+.then(function(responseUV) {
+  return responseUV.json();
+})
+.then(function(responseUV) {
+  var uvIndex = responseUV[0].value;
+  $("#uvIndexToday").text(uvIndex);
+  
+  if (uvIndex < 3) {
+    $("#uvIndexToday").addClass("bg-success");
+  } else if (uvIndex > 2 && uvIndex < 6) {
+    $("#uvIndexToday").addClass("bg-warning");
+  } else if (uvIndex > 5 && uvIndex < 8) {
+    $("#uvIndexToday").addClass("orange");
+  } else if (uvIndex > 7 && uvIndex < 11) {
+    $("#uvIndexToday").addClass("bg-danger");
+  } else {
+    $("#uvIndexToday").addClass("purple");
+  }  
+});
 
 // Loop for 5 Day Forecast goes here... Date, icon, temp, humidity
 
@@ -60,46 +87,10 @@ function myFunction() {
 
 }
 
-//   function rendereditEvents(list, id) {
-//     $('#editEvents'+ id).empty();
-//     for (var i = 0; i < list.length; i++) {
-//       var editEventItem = $(' <p> ');
-//       editEventItem.text(list[i]);
-//       // var editEventClose = $('<button>');
-//       // editEventClose.attr('data-event', i);
-//       // editEventClose.attr('value', id);
-//       // editEventClose.addClass('checkbox');     
-//       // editEventClose.text(' X ');
-//       // editEventItem = editEventItem.prepend(editEventClose);
-//       $('#editEvents'+ id).append(editEventItem);
-//     }
-//   }
-//   $('.container-fluid').on('click',".add-editEvent", function(event) {
-//     event.preventDefault();
-//     var id  = event.target.value;
-//     console.log(id);
-//     var editEventTask = $('#editEvent' + id)
-//       .val()
-//       .trim();
-// var list = JSON.parse(localStorage.getItem(id)) || [];
-//     list.push(editEventTask);
-//     rendereditEvents(list, id);
-//     localStorage.setItem(id, JSON.stringify(list));      
-//     $('#editEvent'+ id).val('');
-//   });
+function myFunction() {
+    var citySearch = document.querySelector('#citySearch').value;
+    apiFunc(citySearch);
+}
 
-//   $(document).on('click', '.checkbox', function() {    
-//       var editEventNumber = $(this).attr('data-event');
-//       var id  = event.target.value;
-//       var list = JSON.parse(localStorage.getItem(id)) || [];
-//       console.log(editEventNumber);
-//       list.splice(editEventNumber, 1);
-//       rendereditEvents(list, id);
-//       localStorage.setItem(id, JSON.stringify(list));
-//     });
-    
-//     for (var i = 9; i <= 17; i++) {
-//         var list = JSON.parse(localStorage.getItem(i)) || [];
-//         rendereditEvents(list, i);
-//     }
+
     
