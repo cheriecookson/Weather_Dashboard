@@ -50,6 +50,9 @@ function apiFunc(citySearch) {
       $("#humidityToday").text(response.list[0].main.humidity);
       $("#humidityDay1").text(response.list[1].main.humidity);
       $("#humidityDay2").text(response.list[2].main.humidity);
+      $("#humidityDay3").text(response.list[3].main.humidity);
+      $("#humidityDay4").text(response.list[4].main.humidity);
+      $("#humidityDay5").text(response.list[5].main.humidity);
 
       $("#windSpeedToday").text(response.list[0].wind.speed); 
     var cityLat = response.city.coord.lat;       

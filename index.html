@@ -25,26 +25,25 @@
 </head>
 <body>
     <header class="display-4 bg-dark text-white text-center p-2 font-weight-bold">Weather Dashboard</header>  
+
+
       <div class="container-fluid">
         <div class="row">
-          <div class="col-12">
-            <h2 class="card-title pt-2">Search for a City:</h2>
-            <div class="row">
-              <div class="col-3">
+            <div class="col-md-3">
+                <h2 class="card-title pt-2">Search for a City:</h2>
                 <div class="input-group pb-4">
                     <input type="text" onfocus="this.value=''" id="citySearch" class="form-control form-control-lg shadow">
                     <span class="input-group-btn"><button onclick="myFunction()" class="btn btn-primary shadow btn-lg rounded-0" type="submit"><span class="oi oi-magnifying-glass"></span></button>
                         </span>
                     </div>
                     
-                    <div class="card" style="width: 100%;">
+                    <div class="card shadow" style="width: 100%;">
                       <ul class="list-group" id="searchList">
                         <li class="list-group-item"></li>
                       </ul>
                     </div>
-                    
-              </div>
-              <div class="col-9">
+            </div>
+            <div class="col-md-9 pt-4">
                 <div class="card shadow" style="width: 100%;">
                     <div class="card-body">
                         <h1 class="card-title"><span id="cityNameResult"></span> <span id="today"></span><span><img id="iconToday" src=""></span></h1>
@@ -57,65 +56,59 @@
                           </ul>
                     </div>
                     </div>
+              <div class="row">
+                <h1 class="card-title pt-4 pl-3">5-Day Forecast:</h1>
+                <div class="col-12">
+                    <div class="card-deck">
+                        <div class="card bg-primary shadow text-white ">
+                          <div class="card-body">
+                            <h4 class="card-title pb-2" id="timeDay1"></h4>
+                            <p class="card-text pb-2"><img id="iconDay1" src=""></p>
+                            <p class="card-text pb-2">Temp: <span id="tempDay1"></span> °F</p>
+                            <p class="card-text pb-2">Humidity: <span id="humidityDay1"></span>%</p>
+                          </div>
+                        </div>
+                        <div class="card bg-primary shadow text-white ">
+                            <div class="card-body">
+                              <h4 class="card-title pb-2" id="timeDay2"></h4>
+                              <p class="card-text pb-2"><img id="iconDay2" src=""></p>
+                              <p class="card-text pb-2">Temp: <span id="tempDay2"></span> °F</p>
+                              <p class="card-text pb-2">Humidity: <span id="humidityDay2"></span>%</p>
+                            </div>
+                          </div>
+                        <div class="card bg-primary shadow text-white ">
+                            <div class="card-body">
+                              <h4 class="card-title pb-2" id="timeDay3"></h4>
+                              <p class="card-text pb-2"><img id="iconDay3" src=""></p>
+                              <p class="card-text pb-2">Temp: <span id="tempDay3"></span> °F</p>
+                              <p class="card-text pb-2">Humidity: <span id="humidityDay3"></span>%</p>
+                            </div>
+                        </div>
+                        <div class="card bg-primary shadow text-white ">
+                          <div class="card-body">
+                            <h4 class="card-title pb-2" id="timeDay4"></h4>
+                            <p class="card-text pb-2"><img id="iconDay4" src=""></p>
+                            <p class="card-text pb-2">Temp: <span id="tempDay4"></span> °F</p>
+                            <p class="card-text pb-2">Humidity: <span id="humidityDay4"></span>%</p>
+                          </div>
+                      </div>
+                      <div class="card bg-primary shadow text-white ">
+                        <div class="card-body">
+                          <h4 class="card-title pb-2" id="timeDay5"></h4>
+                          <p class="card-text pb-2"><img id="iconDay5" src=""></p>
+                          <p class="card-text pb-2">Temp: <span id="tempDay5"></span> °F</p>
+                          <p class="card-text pb-2">Humidity: <span id="humidityDay5"></span>%</p>
+                        </div>
+                    </div>   
+                       
+                      </div>
+                </div>
+                
               </div>
             </div>
+            
           </div>
         </div>
-        <div class="row">
-            <div class="col-9 offset-3 pt-4 pb-2">
-                <h1 class="card-title p-1">5-Day Forecast:</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-9 offset-3">
-                <div class="card-deck">
-                    <div class="card bg-primary shadow text-white ">
-                      <div class="card-body">
-                        <h4 class="card-title pb-2" id="timeDay1"></h4>
-                        <p class="card-text pb-2"><img id="iconDay1" src=""></p>
-                        <p class="card-text pb-2">Temp: <span id="tempDay1"></span> °F</p>
-                        <p class="card-text pb-2">Humidity: <span id="humidityDay1"></span>%</p>
-                      </div>
-                    </div>
-                    <div class="card bg-primary shadow text-white ">
-                        <div class="card-body">
-                          <h4 class="card-title pb-2" id="timeDay2"></h4>
-                          <p class="card-text pb-2"><img id="iconDay2" src=""></p>
-                          <p class="card-text pb-2">Temp: <span id="tempDay2"></span> °F</p>
-                          <p class="card-text pb-2">Humidity: <span id="humidityDay2"></span>%</p>
-                        </div>
-                      </div>
-                    <div class="card bg-primary shadow text-white ">
-                        <div class="card-body">
-                          <h4 class="card-title pb-2" id="timeDay3"></h4>
-                          <p class="card-text pb-2"><img id="iconDay3" src=""></p>
-                          <p class="card-text pb-2">Temp: <span id="tempDay3"></span> °F</p>
-                          <p class="card-text pb-2">Humidity: <span id="humidityDay3"></span>%</p>
-                        </div>
-                    </div>
-                    <div class="card bg-primary shadow text-white ">
-                      <div class="card-body">
-                        <h4 class="card-title pb-2" id="timeDay4"></h4>
-                        <p class="card-text pb-2"><img id="iconDay4" src=""></p>
-                        <p class="card-text pb-2">Temp: <span id="tempDay4"></span> °F</p>
-                        <p class="card-text pb-2">Humidity: <span id="humidityDay4"></span>%</p>
-                      </div>
-                  </div>
-                  <div class="card bg-primary shadow text-white ">
-                    <div class="card-body">
-                      <h4 class="card-title pb-2" id="timeDay5"></h4>
-                      <p class="card-text pb-2"><img id="iconDay5" src=""></p>
-                      <p class="card-text pb-2">Temp: <span id="tempDay5"></span> °F</p>
-                      <p class="card-text pb-2">Humidity: <span id="humidityDay5"></span>%</p>
-                    </div>
-                </div>   
-                   
-                  </div>
-                
-            
-            </div>
-        </div>
-      </div>
 
 
 
