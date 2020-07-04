@@ -33,7 +33,7 @@ function apiFunc(citySearch) {
   $("#timeDay5").text(moment().add(5, 'day').format('MM/DD/YYYY'));
 
   fetch(
-    'http://api.openweathermap.org/data/2.5/forecast?q=' +
+    'https://api.openweathermap.org/data/2.5/forecast?q=' +
     citySearch + '&units=imperial&appid=46619697f21a244c99d30c9c97e0ff6c'
   )
   .then(function(response) {
@@ -74,7 +74,7 @@ function apiFunc(citySearch) {
        
 
 fetch(
-  'http://api.openweathermap.org/data/2.5/uvi/forecast?appid=46619697f21a244c99d30c9c97e0ff6c&lat=' + 
+  'https://api.openweathermap.org/data/2.5/uvi/forecast?appid=46619697f21a244c99d30c9c97e0ff6c&lat=' + 
   cityLat + '&lon=' + cityLon + '&cnt=0'
 )
 .then(function(responseUV) {
