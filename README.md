@@ -8,4 +8,4 @@ The Weather Dashboard utilizes API data to display the current and 5-day forecas
 
 ## Link
 
-
+[Check the Weather Here!](https://cheriecookson.github.io/weather-dashboard/)
