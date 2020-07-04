@@ -42,20 +42,33 @@ function apiFunc(citySearch) {
   .then(function(response) {
       $("#tempToday").text(response.list[0].main.temp);
       $("#tempDay1").text(response.list[1].main.temp);
+      $("#tempDay2").text(response.list[2].main.temp);
+      $("#tempDay3").text(response.list[3].main.temp);
+      $("#tempDay4").text(response.list[4].main.temp);
+      $("#tempDay5").text(response.list[5].main.temp);
 
       $("#humidityToday").text(response.list[0].main.humidity);
       $("#humidityDay1").text(response.list[1].main.humidity);
+      $("#humidityDay2").text(response.list[2].main.humidity);
 
       $("#windSpeedToday").text(response.list[0].wind.speed); 
     var cityLat = response.city.coord.lat;       
     var cityLon = response.city.coord.lon;
       $("#cityNameResult").text(response.city.name);
+
     var icon = response.list[0].weather[0].icon;
        $("#iconToday").attr('src', "http://openweathermap.org/img/wn/" + icon + "@2x.png");
     var iconDay1 = response.list[1].weather[0].icon;
-       $("#iconDay1").attr('src', "http://openweathermap.org/img/wn/" + iconDay1 + "@2x.png");   
-
-      // for (var i = 1; i <= 5; i++) {  
+       $("#iconDay1").attr('src', "http://openweathermap.org/img/wn/" + iconDay1 + "@2x.png");
+    var iconDay2 = response.list[2].weather[0].icon;
+       $("#iconDay2").attr('src', "http://openweathermap.org/img/wn/" + iconDay2 + "@2x.png");
+    var iconDay3 = response.list[3].weather[0].icon;
+       $("#iconDay3").attr('src', "http://openweathermap.org/img/wn/" + iconDay3 + "@2x.png");
+    var iconDay4 = response.list[4].weather[0].icon;
+       $("#iconDay4").attr('src', "http://openweathermap.org/img/wn/" + iconDay4 + "@2x.png");     
+    var iconDay5 = response.list[5].weather[0].icon;
+       $("#iconDay5").attr('src', "http://openweathermap.org/img/wn/" + iconDay5 + "@2x.png"); 
+       
 
 fetch(
   'http://api.openweathermap.org/data/2.5/uvi/forecast?appid=46619697f21a244c99d30c9c97e0ff6c&lat=' + 
@@ -91,3 +104,4 @@ function myFunction() {
     var citySearch = document.querySelector('#citySearch').value;
     apiFunc(citySearch);
 }
+
