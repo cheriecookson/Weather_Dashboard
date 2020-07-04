@@ -1,4 +1,4 @@
-var cityList = JSON.parse(localStorage.getItem("cityList")) || ["dallas", "denver", "houston"];
+var cityList = JSON.parse(localStorage.getItem("cityList")) || ["denver", "taos", "miami"];
 function cities(arr) {
   $("#searchList").empty();
   for (var i = 0; i < arr.length; i++) {
@@ -91,6 +91,3 @@ function myFunction() {
     var citySearch = document.querySelector('#citySearch').value;
     apiFunc(citySearch);
 }
-
-
-    
